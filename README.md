@@ -116,11 +116,31 @@ And, I can be DM'ed on Keybase at:
 
 ## Resources
 
--[GetX repo](https://github.com/jonataslaw/getx)
+-[Riverpod repo](https://github.com/rrousselGit/river_pod)
+
+-[Riverpod @pub.dev](https://pub.dev/packages/riverpod)
+
+-[Catcher @pub.dev](https://pub.dev/packages/catcher)
+
+-[Catcher @github.com](https://github.com/jhomlala/catcher)
+
+-[Fimber@pub.dev](https://pub.dev/packages/fimber)
+
+-[Fimber@github.com](https://github.com/magillus/flutter-fimber)
+
+-[Logging@pub.dev](https://pub.dev/packages/logging)
+
+-[Logging@github.com](https://github.com/dart-lang/logging)
+
+-[Logging Appenders@pub.dev](https://pub.dev/packages/logging_appenders)
+
+-[Logging Appenders@github.com](https://github.com/hpoul/dart_logging_appenders)
+
+-[Flutter Platform Widgets@pub.dev](https://pub.dev/packages/flutter_platform_widgets)
+
+-[Flutter Platform Widgets@github.com](https://github.com/stryder-dev/flutter_platform_widgets)
 
 -[Flutter State Management Benchmarks](https://github.com/jonataslaw/flutter_state_managers)
-
--[GetX Pattern Architecture](https://github.com/kauemurakami/getx_pattern)
 
 -[ChangeNotifier Benchmark, note that this includes the benchmark of the proposed but not in sdk changenotifier mod](https://github.com/knaeckeKami/changenotifier_benchmark)
 
