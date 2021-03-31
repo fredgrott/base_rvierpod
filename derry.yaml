@@ -1,0 +1,218 @@
+# DEPENDENCIES:
+#    PERL INSTALLED AND ON PATH
+#    PYTHON INSTALLED AND ON PATH
+#    LCOV PERL SCRIPTS INSTALLED
+#    JUNIT2HTML PYTHON SCRIPT INSTALLED
+#    PLANTUML JAR INSTALLED IN FOLDER AND ENV SET TO ITS PATH AS #              PLANTUML ENV VARIABLE
+#
+#   IF ON WINDOWS THAN CHOCLATEY PM CAN BE USED TO 
+#   INSTALL WINDOW VERSION OF LCOV AND THAT ALSO INSTALLS
+#   PERL AND THAN INSTALL PYTHON VIA CHOCOLATEY AND THAN USE 
+#   PIP TO INSTALL JUNIT2HTML
+
+
+
+
+# Basic idea here is something easy reachable for the beginning
+# flutter developer as far as automating some dev ops
+# basics to get more feedback during coding
+# sprints to enable the potential developer
+# to pick up flutter and dart concepts faster
+#
+# derry can operate two ways, but we just use commandline to
+# execute the full derry.yaml set of scripts as command-line of:
+# derry build
+# derry doc is a separate script that can be run via commandline as:
+# derry doc
+#
+# note since pub is on my path via dark sdk path
+# no need to specift pub run stuff to run binaries
+# just the binary name suffices
+
+# SIDE NOTE: How did I come up with this organized shit?!
+#            You sit there and start playing with all the
+#            individual binaries you have to execute to get
+#            the full build of the project and all the feedback
+#            in the form of api-docs, uml, test reports, etc.
+#            Than you rest your eyes and step back and than
+#            you can figure our how one should organize it.
+#            Fredrick Allan Grott 2-14-21
+
+# Planning reports dirs structures
+# reports
+#     coverage
+#     uml
+#     test
+#
+# code metrics does not have a dir arg parameter setting as of
+# yet. Using this as I can reduce some instruction execution in
+# derry and make things more effective with less instructions.
+# At this point assume that individual processes do their
+# own directory and file clean-up after every run and re-run.
+
+# run this at project creation via
+# derry prepdir platformName
+# no need to do separate win64, mac64, and linux64 commands
+# as dir creation is the same command on all platforms
+prepdir:
+  win64:
+      - mkdir reports\uml
+      - mkdir reports\coverage
+      - mkdir reports\test
+      - echo reports dir creation
+  mac64:
+      - mkdir reports/uml
+      - mkdir reports/coverage
+      - mkdir reports/test
+      - echo reports dir creation
+  linux64:
+      - mkdir reports/uml
+      - mkdir reports/coverage
+      - mkdir reports/test
+      - echo reports dir creation
+
+
+
+# can be executed via
+# derry test platformName
+# will run both widget tests and goldens
+# other command line options can be found at
+# https://pub.dev/packages/test#running-tests
+# junitreport command usage at
+# https://pub.dev/packages/junitreport
+test:
+  win64:
+    - flutter test --machine | tojunit -o reports\test\base_riverpod-test.xml
+    - junit2html reports\test\base_riverpod-test.xml reports\test\base_riverpod-test.html
+    - echo widget tests reports created
+  mac64:
+    - flutter test --machine | tojunit -o reports/test/base_riverpod-test.xml
+    - junit2html reports/test/base_riverpod-test.xml reports/test/base_riverpod-test.html
+    - echo widget tests reports created
+  linux64:
+    - flutter test --machine | tojunit -o reports/test/base_riverpod-test.xml
+    - junit2html reports/test/base_riverpod-test.xml reports/test/base_riverpod-test.html
+    - echo widget tests reports created
+
+# win64 flutter test --coverage --coverage-path reports\coverage
+# mac64 flutter test --coverage --coverage-path reports/coverage
+# --coverage-path currrently fails on windows
+# the GENTHML var is the location of perl genhtml  script as
+# part of the lcov package
+mycoverage:
+  win64:
+    - rmdir -s reports\coverage
+    - flutter test --coverage
+    - perl %GENHTML% -o coverage\html coverage\lcov.info
+    - move coverage reports
+    - echo coverage report generated
+  mac64:
+    - rm -r reports/coverage
+    - flutter test --coverage
+    - $GENHTML coverage/lcov.info -o coverage/html
+    - mv coverage reports
+    - echo coverage report generated
+  linux64:
+    - rm -r reports/coverage
+    - flutter test --coverage
+    - $GENTHML coverage/lcov.info -o coverage/html
+    - mv coverage reports
+    - echo coverage report generated
+
+# executed via
+# derry mygoldens
+# run separately as this only needs to be run during
+# ui visual design changes
+# and the api of the golden_toolkit is at
+# https://pub.dev/packages/golden_toolkit
+mygoldens:
+  win64:
+    - flutter test --update-goldens --machine | tojunit -o reports\test\base_riverpod-test.xml
+    - junit2html reports\test\base_riverpod-test.xml reports\test\base_riverpod-test.html
+    - echo goldens report generated
+  mac64:
+    - flutter test --update-goldens --machine | tojunit -o reports/test/base_riverpod-test.xml
+    - junit2html reports/test/base_riverpod-test.xml reports/test/base_riverpod-test.html
+    - echo goldens report generated
+  linux64:
+    - flutter test --update-goldens --machine | tojunit -o reports/test/base_riverpod-test.xml
+    - junit2html reports/test/base_riverpod-test.xml reports/test/base_rvierpod-test.html
+    - echo goldens report generated
+
+# can be executed via
+# derry uml platformName
+# other command line options can be found at
+# https://pub.dev/packages/dcdg
+uml:
+  win64:
+    - dcdg -o reports\uml\base_riverpod.puml
+    - java -jar %PLANTUML% reports\uml\base_riverpod.puml -config skinparams.iuml
+    - echo uml png generated
+  mac64:
+    - dcdg -o reports/uml/base_riverpod.puml
+    - java -jar $PLANTUML reports/uml/base_riverpod.puml -config skinparams.iuml
+    - echo uml png generated
+  linux64:
+    - dcdg -o reports/uml/base_riverpod.puml
+    - java -jar $PLANTUML reports/uml/base_riverpod.puml -config skinparams.iuml
+    - echo uml png generated
+
+# can be executed via
+# derry mymetrics
+# will create its own metrics dir and reports
+# see this for other command line options one can use
+# https://pub.dev/packages/dart_code_metrics
+mymetrics:
+  win64:
+    - rmdir -s reports/metrics
+    - metrics lib --reporter=html
+    - move metrics reports
+    - echo code metrics report generated
+  mac64:
+    - rm reports/metrics
+    - metrics lib --reporter=html
+    - mv metrics reports
+    - echo code metrics report generated
+  linux64:
+    - rm reports/metrics
+    - metrics lib --reporter=html
+    - mv metrics reports
+    - echo code metrics report generated
+    
+
+
+
+# creates its own doc/api folder
+# and api docs via the
+# derry docs
+# other settings and options can be found at
+# https://pub.dev/packages/dartdoc
+docs:
+  win64:
+    - dartdoc
+    - mkdir doc\api\images
+    - copy media\git-repo-card.png doc\api\images
+    - copy media\screenshot.png doc\api\images
+    - echo api docs generated
+  mac64:
+    - dartdoc
+    - mkdir doc/api/images
+    - cp media/git-repo-cardp.png doc/api/images
+    - cp media/screenshot.png doc/api/images
+    - echo api docs generated
+  linux64:
+    - dartdoc
+    - mkdir doc/api/images
+    - cp media/git-repo-cardp.png doc/api/images
+    - cp media/screenshot.png doc/api/images
+    -echo api docs generated
+
+integration:
+  win64:
+    - flutter drive --driver=test_driver\integration_test.dart --target=integration_test\widget_screen_test.dart --host-vmservice-port 8888 > machine.log
+  mac64: 
+    - flutter drive --driver=test_driver/integration_test.dart --target=integration_test/widget_screen_test.dart --host-vmservice-port 8888 > machine.log
+  linux64:
+    - flutter drive --driver=test_driver/integration_test.dart --target=integration_test/widget_screen_test.dart --host-vmservice-port 8888 > machine.log
+
+

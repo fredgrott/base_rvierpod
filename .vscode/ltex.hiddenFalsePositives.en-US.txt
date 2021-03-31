@@ -1,0 +1,11 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QHitCountMaintainerGitHub forksGitHub starsGitHub followersGitHub contributorsGitHub issuesGitHub issues-closed\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QTwitterXingkeybasegithubmediumlinkedindartfluttervscodeandroid studiomarkdownbsdlicense\\E$"}
+{"rule":"MULTIPLICATION_SIGN","sentence":"^\\QAny state management based on ChangeNotifier is O*N^2 which is terrible performance due to use of plain list instead of Linked-List\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q-DCDG, UML generation\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q-junitreport\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q-DartDoc\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q-Dhttpd, it's optional if you want to view API docs generated correctly\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q-PlantUML, UML Generation\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q-GENHTML, which is part of LCOV I am showing the windows port\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q-GENHTML, LCOV on Unix-Linux systems\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QApple Inc owns the trademarks iOS, MacOSX, Swift, and Objective-C.\\E$"}

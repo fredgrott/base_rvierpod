@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="dontrun-integration-test" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+    <option name="arguments" value="--host-vmservice-port 8888 &gt; machine.log" />
+    <option name="envs">
+      <entry key="VM_SERVICE_URL" value="http://127.0.0.1:8888/" />
+    </option>
+    <option name="filePath" value="$PROJECT_DIR$/test_driver/integration_test.dart" />
+    <option name="workingDirectory" value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+  <configuration name="dontrun-integration-test" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+    <option name="arguments" value="--host-vmservice-port 8888 &gt; machine.log" />
+    <option name="envs">
+      <entry key="VM_SERVICE_URL" value="http://127.0.0.1:8888/" />
+    </option>
+    <option name="filePath" value="$PROJECT_DIR$/test_driver/integration_test.dart" />
+    <option name="workingDirectory" value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>
