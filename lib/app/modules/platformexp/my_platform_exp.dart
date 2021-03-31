@@ -11,10 +11,10 @@ import 'package:catcher/catcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
-class MyPlatformExperience extends HookWidget{
+class MyPlatformExperience extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
      return Theme(
@@ -29,7 +29,9 @@ class MyPlatformExperience extends HookWidget{
             DefaultCupertinoLocalizations.delegate,
           ],
           navigatorKey: Catcher.navigatorKey,
-          title: 'Flutter Platform Widgets',
+          // so I have nice screenshots for my dev articles
+          debugShowCheckedModeBanner: true,
+          title: 'Counter Example',
           material: (dynamic _, dynamic __) {
             return MaterialAppData(
               theme: materialTheme,
