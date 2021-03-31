@@ -5,7 +5,8 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:ansicolor/ansicolor.dart';
-import 'package:base_riverpod/app/modules/myapp/my_app.dart';
+
+import 'package:base_riverpod/app/modules/platformexp/my_platform_exp.dart';
 import 'package:base_riverpod/app/utils/build_modes.dart';
 import 'package:base_riverpod/app/utils/my_log_setup.dart';
 import 'package:catcher/catcher.dart';
@@ -87,7 +88,7 @@ Future<void> main() async {
       // via the catcher plugin
       Catcher(
       runAppFunction: () {
-        runApp( ProviderScope(child: MyApp()),);
+        runApp( ProviderScope(child: MyPlatformExperience()),);
       },
       debugConfig: debugOptions,
       releaseConfig: releaseOptions);
@@ -101,7 +102,7 @@ Future<void> main() async {
         // Paint all logs with Cyan color
         final pen = AnsiPen()..cyan(bold: true);
         // Include a timestamp and the name of the App
-        final messageToLog = "[${DateTime.now()}] Log_Error $line";
+        final messageToLog = "[${DateTime.now()}] Base_Riverpod $line";
 
         // Also print the message in the "Debug Console"
         parent.print(zone, pen(messageToLog));
