@@ -1,0 +1,1 @@
+Controllers, ie biz logic get grouped with their widget module
