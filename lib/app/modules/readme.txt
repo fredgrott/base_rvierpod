@@ -1,1 +1,1 @@
-Controllers, ie biz logic get grouped with their widget module
+Controllers and or providers get paired with their screens

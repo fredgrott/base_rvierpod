@@ -10,7 +10,7 @@ import 'package:base_riverpod/app/modules/platformexp/my_platform_exp.dart';
 import 'package:base_riverpod/app/utils/build_modes.dart';
 import 'package:base_riverpod/app/utils/my_log_setup.dart';
 import 'package:catcher/catcher.dart';
-import 'package:fimber/fimber.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -48,9 +48,9 @@ Future<void> main() async {
       printLogs: true)
   ]);
 
-  final myMainLogger = FimberLog('main');
+  
 
-  myMainLogger.i("init completed");
+  log("init completed");
 
 
   // replaced with catcher plugin error widget in my_app.dart

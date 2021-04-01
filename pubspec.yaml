@@ -40,12 +40,12 @@ dependencies:
   integration_test: ^1.0.2+2
   golden_toolkit: ^0.9.0
   ansicolor: ^1.1.1
-  fimber: ^0.6.1
   equatable: ^2.0.0
   riverpod: ^0.13.1
   flutter_riverpod: ^0.13.1+1
   flutter_platform_widgets: ^1.1.0
   flutter_hooks: ^0.16.0
+  google_fonts: ^2.0.0
   
  
 

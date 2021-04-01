@@ -6,7 +6,7 @@ import 'package:base_riverpod/app/utils/build_modes.dart';
 import 'package:base_riverpod/app/utils/console_log_sink.dart';
 import 'package:logging/logging.dart';
 import 'package:logging_appenders/logging_appenders.dart';
-import 'package:fimber/fimber.dart';
+
 
 // How Dart Flutter Logging Works:
 //    Print methods are taken out of release builds
@@ -37,7 +37,7 @@ void myLogSetUp() {
   final appender = PrintAppender.setupLogging(stderrLevel: Level.SEVERE);
   PrintAppender(formatter: const ColorFormatter()).attachToLogger(Logger.root);
 
-  Fimber.plantTree(DebugTree.elapsed(useColors: true));
+ 
 
   if (isInReleaseMode) {
     Logger.root.level = Level.OFF;
