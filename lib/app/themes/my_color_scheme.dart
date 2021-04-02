@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+
 // ignore: constant_identifier_names
 const ColorScheme MyColorScheme = ColorScheme(
     primary: Color(0xff6200ee),
@@ -16,3 +17,12 @@ const ColorScheme MyColorScheme = ColorScheme(
     onBackground:  Colors.black,
     onError: Colors.white,
     brightness: Brightness.light);
+
+// Note: CupertinoThemeData only sets:
+//         primaryColor
+//         primaryContrastingColor
+//         barBackgroundColor
+//         scaffoldBackgroundColor
+// 
+//         and the type is Color from dart.ui 
+// 
