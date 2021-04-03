@@ -5,14 +5,17 @@ import 'package:base_riverpod/app/themes/my_materialtext_theme.dart';
 import 'package:flutter/material.dart';
 
 final materialTheme = ThemeData(
+      brightness: Brightness.light,
       primarySwatch: Colors.purple,
       visualDensity:  VisualDensity.adaptivePlatformDensity,
+      scaffoldBackgroundColor: Colors.deepPurple,
       textTheme: myMaterialTextTheme
     );
 
 final materialDarkTheme = ThemeData(
       brightness: Brightness.dark,
-      primarySwatch: Colors.teal,
+      primarySwatch: Colors.indigo,
       visualDensity: VisualDensity.adaptivePlatformDensity,
+      scaffoldBackgroundColor: Colors.indigoAccent,
       textTheme: myMaterialTextTheme
     );

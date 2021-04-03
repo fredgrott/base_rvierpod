@@ -6,7 +6,7 @@ import 'dart:developer';
 
 import 'package:ansicolor/ansicolor.dart';
 import 'package:base_riverpod/app/utils/build_modes.dart';
-import 'package:base_riverpod/app/utils/console_log_sink.dart';
+
 import 'package:logging/logging.dart';
 import 'package:logging_appenders/logging_appenders.dart';
 import 'package:simple_logger/simple_logger.dart';
@@ -52,9 +52,7 @@ void myLogSetUp() {
       includeCallerInfo: true,
     );
 
-    // set console sink and print appender only in debug mode
-    final messageSink = ConsoleLogSink();
-    messageSink.attachToLogger(Logger.root);
+   
     PrintAppender(formatter: const ColorFormatter())
         .attachToLogger(Logger.root);
   }
