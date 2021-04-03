@@ -91,7 +91,8 @@ mixin LogMixin on Object {
     StackTrace stackTrace,
   }) {
     log(
-      message,
+      // since the default level is INFO, color the log
+      penCyan(message),
       name: name ?? _className,
       time: time,
       sequenceNumber: sequenceNumber,

@@ -3,7 +3,7 @@
 
 import 'dart:async';
 
-import 'package:ansicolor/ansicolor.dart';
+
 import 'package:base_riverpod/app/modules/platformexp/views/my_platform_exp.dart';
 
 import 'package:base_riverpod/app/utils/build_modes.dart';
@@ -20,6 +20,8 @@ Future<void> main() async {
   myLogSetUp();
 
   // to enable sentry add this [SentryHandler(SentryClient("YOUR_DSN_HERE"))]
+  // due to web as a target platform we do not set the snapshot path
+  // setting for catcher
   final CatcherOptions debugOptions =
       // ignore: avoid_redundant_argument_values
       CatcherOptions(DialogReportMode(), [
@@ -110,8 +112,8 @@ Future<void> main() async {
         // Also print the message in the "Debug Console"
         // but it's ony an info message and contains no
         // privacy prohibited stuff
-        //parent.print(zone, pen(messageToLog));
-        logger.info(messageToLog);
+        parent.print(zone, penBlue(messageToLog));
+        
       },
     ),
   );
@@ -128,8 +130,7 @@ Future<void> _reportError(dynamic error, dynamic stackTrace) async {
     logger.info(
       '$stackTrace',
     );
-    logger
-        .info('In dev mode. Not sending report to an app exceptions provider.');
+    logger.info('In dev mode. Not sending report to an app exceptions provider.');
 
     return;
   } else {

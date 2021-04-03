@@ -14,7 +14,7 @@ class CounterNotifier extends StateNotifier<CounterModel> with LogMixin {
   void increment() {
     state = CounterModel(state.count + 1);
     // log our state change
-    myAppLog(state.toString(), level: 800);
+    myAppLog("count increased by 1");
   }
 }
 

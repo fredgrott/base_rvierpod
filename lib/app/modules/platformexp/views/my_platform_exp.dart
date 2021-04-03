@@ -47,6 +47,11 @@ class MyPlatformExperience extends StatelessWidget with LogMixin {
                   theme: cupertinoTheme,
                 ),
             home: MyHomePage()),
+            // temp setting until I get a real iOS simulator
+            // as any debug button or panel will detract from seeing full 
+            // UI in debug mode which I despise. Much easier to uncomment this 
+            // when I need to see the iOS UI.
+            initialPlatform: TargetPlatform.iOS,
       ),
     );
   }
