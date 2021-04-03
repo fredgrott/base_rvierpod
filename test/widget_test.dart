@@ -3,7 +3,8 @@
 
 
 
-import 'package:base_riverpod/app/modules/platformexp/my_platform_exp.dart';
+
+import 'package:base_riverpod/app/modules/platformexp/views/my_platform_exp.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';

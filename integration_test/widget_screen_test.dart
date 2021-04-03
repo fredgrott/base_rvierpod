@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license.
 
 
-import 'package:base_riverpod/app/modules/platformexp/my_platform_exp.dart';
+
+import 'package:base_riverpod/app/modules/platformexp/views/my_platform_exp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

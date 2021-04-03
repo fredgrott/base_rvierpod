@@ -6,8 +6,8 @@
 
 
 
-import 'package:base_riverpod/app/modules/homepage/my_homepage_exp.dart';
-import 'package:base_riverpod/app/modules/platformexp/my_platform_exp.dart';
+import 'package:base_riverpod/app/modules/homepage/views/my_homepage_exp.dart';
+import 'package:base_riverpod/app/modules/platformexp/views/my_platform_exp.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';

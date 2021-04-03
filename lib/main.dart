@@ -2,18 +2,26 @@
 // Use of this source code is governed by a BSD-style license.
 
 import 'dart:async';
-import 'dart:developer';
+
 
 import 'package:ansicolor/ansicolor.dart';
+import 'package:base_riverpod/app/modules/platformexp/views/my_platform_exp.dart';
 
-import 'package:base_riverpod/app/modules/platformexp/my_platform_exp.dart';
 import 'package:base_riverpod/app/utils/build_modes.dart';
-import 'package:base_riverpod/app/utils/my_log_setup.dart';
+import 'package:base_riverpod/app/utils/my_log_env.dart';
+
 import 'package:catcher/catcher.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
+
+// per logging package directions we redefine develop.log feature
+// we do this for every file where we do not have the class LogMixin
+// stated in a class as in those classes we already have the name 
+// attribute of log function already defined as the classname string 
+// value.
+final log = Logger('main');
 
 
 Future<void> main() async {
@@ -24,50 +32,50 @@ Future<void> main() async {
   // to enable sentry add this [SentryHandler(SentryClient("YOUR_DSN_HERE"))]
   final CatcherOptions debugOptions =
       // ignore: avoid_redundant_argument_values
-      CatcherOptions(DialogReportMode(), [ConsoleHandler(enableApplicationParameters: true,
-          // ignore: avoid_redundant_argument_values
-          enableDeviceParameters: true,
-          enableCustomParameters: true,
-          // ignore: avoid_redundant_argument_values
-          enableStackTrace: true)]);
-
-  
-  final CatcherOptions releaseOptions = CatcherOptions(DialogReportMode(), [
-    EmailManualHandler(["email1@email.com", "email2@email.com"],
-      // ignore: avoid_redundant_argument_values
-      enableDeviceParameters: true,
-      // ignore: avoid_redundant_argument_values
-      enableStackTrace: true,
-      // ignore: avoid_redundant_argument_values
-      enableCustomParameters: true,
-      // ignore: avoid_redundant_argument_values
-      enableApplicationParameters: true,
-      // ignore: avoid_redundant_argument_values
-      sendHtml: true,
-      emailTitle: "Sample Title",
-      emailHeader: "Sample Header",
-      printLogs: true)
+      CatcherOptions(DialogReportMode(), [
+    ConsoleHandler(
+        // ignore: avoid_redundant_argument_values
+        enableApplicationParameters: true,
+        // ignore: avoid_redundant_argument_values
+        enableDeviceParameters: true,
+        enableCustomParameters: true,
+        // ignore: avoid_redundant_argument_values
+        enableStackTrace: true)
   ]);
 
-  
+  final CatcherOptions releaseOptions = CatcherOptions(DialogReportMode(), [
+    EmailManualHandler(["email1@email.com", "email2@email.com"],
+        // ignore: avoid_redundant_argument_values
+        enableDeviceParameters: true,
+        // ignore: avoid_redundant_argument_values
+        enableStackTrace: true,
+        // ignore: avoid_redundant_argument_values
+        enableCustomParameters: true,
+        // ignore: avoid_redundant_argument_values
+        enableApplicationParameters: true,
+        // ignore: avoid_redundant_argument_values
+        sendHtml: true,
+        emailTitle: "Sample Title",
+        emailHeader: "Sample Header",
+        printLogs: true)
+  ]);
 
-  log("init completed");
-
+  log.info("init completed");
 
   // replaced with catcher plugin error widget in my_app.dart
   //ErrorWidget.builder = (FlutterErrorDetails details) {
-    //if (isInDebugMode) {
-      //return ErrorWidget(details.exception);
-   // }
+  //if (isInDebugMode) {
+  //return ErrorWidget(details.exception);
+  // }
 
-    //return Container(
-     // alignment: Alignment.center,
-    //  child: const Text(
-     //   'Error!',
-     //   style: TextStyle(color: Colors.yellow),
-     //   textDirection: TextDirection.ltr,
-     // ),
-    //);
+  //return Container(
+  // alignment: Alignment.center,
+  //  child: const Text(
+  //   'Error!',
+  //   style: TextStyle(color: Colors.yellow),
+  //   textDirection: TextDirection.ltr,
+  // ),
+  //);
   //};
 
   FlutterError.onError = (FlutterErrorDetails details) async {
@@ -88,11 +96,13 @@ Future<void> main() async {
       //runApp(MyApp());
       // via the catcher plugin
       Catcher(
-      runAppFunction: () {
-        runApp( ProviderScope(child: MyPlatformExperience()),);
-      },
-      debugConfig: debugOptions,
-      releaseConfig: releaseOptions);
+          runAppFunction: () {
+            runApp(
+              ProviderScope(child: MyPlatformExperience()),
+            );
+          },
+          debugConfig: debugOptions,
+          releaseConfig: releaseOptions);
     },
     (error, stackTrace) async {
       await _reportError(error, stackTrace);
@@ -106,21 +116,22 @@ Future<void> main() async {
         final messageToLog = "[${DateTime.now()}] Base_Riverpod $line";
 
         // Also print the message in the "Debug Console"
+        // but it's ony an info message and contains no
+        // privacy prohibited stuff
         parent.print(zone, pen(messageToLog));
-        
       },
     ),
   );
 }
 
 Future<void> _reportError(dynamic error, dynamic stackTrace) async {
-  log('Caught error: $error', level: 1000);
+  log.info('Caught error: $error', );
   // Errors thrown in development mode are unlikely to be interesting. You
   // check if you are running in dev mode using an assertion and omit send
   // the report.
   if (isInDebugMode) {
-    log('$stackTrace', level: 1000);
-    log('In dev mode. Not sending report to an app exceptions provider.',level: 800);
+    log.info('$stackTrace', );
+    log.info('In dev mode. Not sending report to an app exceptions provider.');
 
     return;
   } else {
