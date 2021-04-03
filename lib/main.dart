@@ -3,7 +3,6 @@
 
 import 'dart:async';
 
-
 import 'package:ansicolor/ansicolor.dart';
 import 'package:base_riverpod/app/modules/platformexp/views/my_platform_exp.dart';
 
@@ -14,15 +13,6 @@ import 'package:catcher/catcher.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logging/logging.dart';
-
-// per logging package directions we redefine develop.log feature
-// we do this for every file where we do not have the class LogMixin
-// stated in a class as in those classes we already have the name 
-// attribute of log function already defined as the classname string 
-// value.
-final log = Logger('main');
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,7 +50,7 @@ Future<void> main() async {
         printLogs: true)
   ]);
 
-  log.info("init completed");
+  logger.info("init completed");
 
   // replaced with catcher plugin error widget in my_app.dart
   //ErrorWidget.builder = (FlutterErrorDetails details) {
@@ -107,31 +97,39 @@ Future<void> main() async {
     (error, stackTrace) async {
       await _reportError(error, stackTrace);
     },
+    // yes we can redefine the zoneSpecification to intercept the print 
+    // calls and funnel them to log calls via the logger of simple logger
     zoneSpecification: ZoneSpecification(
       // Intercept all print calls
       print: (self, parent, zone, line) async {
-        // Paint all logs with Cyan color
-        final pen = AnsiPen()..cyan(bold: true);
+        
+        
         // Include a timestamp and the name of the App
-        final messageToLog = "[${DateTime.now()}] Base_Riverpod $line";
+        final messageToLog = "[${DateTime.now()}] Base_Riverpod $line $zone";
 
         // Also print the message in the "Debug Console"
         // but it's ony an info message and contains no
         // privacy prohibited stuff
-        parent.print(zone, pen(messageToLog));
+        //parent.print(zone, pen(messageToLog));
+        logger.info(messageToLog);
       },
     ),
   );
 }
 
 Future<void> _reportError(dynamic error, dynamic stackTrace) async {
-  log.info('Caught error: $error', );
+  logger.info(
+    'Caught error: $error',
+  );
   // Errors thrown in development mode are unlikely to be interesting. You
   // check if you are running in dev mode using an assertion and omit send
   // the report.
   if (isInDebugMode) {
-    log.info('$stackTrace', );
-    log.info('In dev mode. Not sending report to an app exceptions provider.');
+    logger.info(
+      '$stackTrace',
+    );
+    logger
+        .info('In dev mode. Not sending report to an app exceptions provider.');
 
     return;
   } else {
