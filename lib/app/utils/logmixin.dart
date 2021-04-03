@@ -11,6 +11,14 @@ import 'dart:developer';
 ///   myAppLog(message: "logit", level: Level.INFO)
 /// }
 /// ```
+/// Note that level is set to int of Zero or logging OFF as 
+/// we want it in idiot mode in-case some clue-less dev 
+/// fails to set up the logging package settings in the 
+/// app init correctly have logging level set to 
+/// zero in release builds. An example of the 
+/// idiot proofing you should always do in your dev-tools 
+/// and dev-ops habits.
+/// 
 /// @author Fredrick Allan Grott
 mixin LogMixin on Object {
   String get _className => runtimeType.toString();

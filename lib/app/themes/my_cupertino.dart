@@ -1,5 +1,6 @@
 
 
+import 'package:base_riverpod/app/themes/my_cupertinotext_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,4 +14,5 @@ final cupertinoTheme = CupertinoThemeData(
         color: Colors.purple,
         darkColor: Colors.cyan,
       ),
+      textTheme: myCupertinoTextThemeData
     );

@@ -13,6 +13,7 @@ import 'package:catcher/catcher.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logging/logging.dart';
 
 
 Future<void> main() async {
@@ -113,13 +114,13 @@ Future<void> main() async {
 }
 
 Future<void> _reportError(dynamic error, dynamic stackTrace) async {
-  log('Caught error: $error');
+  log('Caught error: $error', level: 1000);
   // Errors thrown in development mode are unlikely to be interesting. You
   // check if you are running in dev mode using an assertion and omit send
   // the report.
   if (isInDebugMode) {
-    log('$stackTrace');
-    log('In dev mode. Not sending report to an app exceptions provider.');
+    log('$stackTrace', level: 1000);
+    log('In dev mode. Not sending report to an app exceptions provider.',level: 800);
 
     return;
   } else {
