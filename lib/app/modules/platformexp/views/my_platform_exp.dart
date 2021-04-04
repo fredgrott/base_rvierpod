@@ -5,7 +5,7 @@
 import 'package:base_riverpod/app/modules/homepage/views/my_homepage_exp.dart';
 import 'package:base_riverpod/app/themes/my_cupertino.dart';
 import 'package:base_riverpod/app/themes/my_material.dart';
-import 'package:base_riverpod/app/utils/my_log_env.dart';
+import 'package:base_riverpod/app/utils/logging/my_log_env.dart';
 
 import 'package:catcher/catcher.dart';
 import 'package:flutter/cupertino.dart';

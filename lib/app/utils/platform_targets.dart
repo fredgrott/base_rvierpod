@@ -4,17 +4,17 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:base_riverpod/app/utils/logging/log_exception.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-// part of app initialization so we do not redefine 
-// the developer.log function with a logger out of 
+// part of app initialization so we do not redefine
+// the developer.log function with a logger out of
 // logging package here.
 
 final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
 Map<String, dynamic> deviceData = <String, dynamic>{};
-
 
 bool get isOnWeb {
   // ignore: unused_local_variable
@@ -125,6 +125,7 @@ Future<void> initPlatformState() async {
     }
   } on PlatformException {
     deviceData = <String, dynamic>{'Error:': 'Failed to get platform version.'};
-    log("platform exception");
+    //log("platform exception");
+    LogException("platform exception at initPlatformState");
   }
 }

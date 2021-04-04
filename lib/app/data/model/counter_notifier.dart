@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license.
 
 
-import 'package:base_riverpod/app/utils/my_log_env.dart';
+import 'package:base_riverpod/app/utils/logging/my_log_env.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 

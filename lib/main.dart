@@ -3,11 +3,11 @@
 
 import 'dart:async';
 
-
 import 'package:base_riverpod/app/modules/platformexp/views/my_platform_exp.dart';
 
 import 'package:base_riverpod/app/utils/build_modes.dart';
-import 'package:base_riverpod/app/utils/my_log_env.dart';
+import 'package:base_riverpod/app/utils/logging/log_exception.dart';
+import 'package:base_riverpod/app/utils/logging/my_log_env.dart';
 
 import 'package:catcher/catcher.dart';
 
@@ -15,9 +15,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
 
-  myLogSetUp();
+    myLogSetUp();
+  } catch (error) {
+    LogException("Main init failed");
+  }
 
   // to enable sentry add this [SentryHandler(SentryClient("YOUR_DSN_HERE"))]
   // due to web as a target platform we do not set the snapshot path
@@ -99,13 +103,11 @@ Future<void> main() async {
     (error, stackTrace) async {
       await _reportError(error, stackTrace);
     },
-    // yes we can redefine the zoneSpecification to intercept the print 
+    // yes we can redefine the zoneSpecification to intercept the print
     // calls and funnel them to log calls via the logger of simple logger
     zoneSpecification: ZoneSpecification(
       // Intercept all print calls
       print: (self, parent, zone, line) async {
-        
-        
         // Include a timestamp and the name of the App
         final messageToLog = "[${DateTime.now()}] Base_Riverpod $line $zone";
 
@@ -113,7 +115,6 @@ Future<void> main() async {
         // but it's ony an info message and contains no
         // privacy prohibited stuff
         parent.print(zone, penBlue(messageToLog));
-        
       },
     ),
   );
@@ -130,7 +131,8 @@ Future<void> _reportError(dynamic error, dynamic stackTrace) async {
     logger.info(
       '$stackTrace',
     );
-    logger.info('In dev mode. Not sending report to an app exceptions provider.');
+    logger
+        .info('In dev mode. Not sending report to an app exceptions provider.');
 
     return;
   } else {
