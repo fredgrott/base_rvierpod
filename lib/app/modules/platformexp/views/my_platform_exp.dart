@@ -54,7 +54,7 @@ class MyPlatformExperience extends StatelessWidget with UiLogger {
             // as any debug button or panel will detract from seeing full 
             // UI in debug mode which I despise. Much easier to uncomment this 
             // when I need to see the iOS UI.
-            initialPlatform: TargetPlatform.iOS,
+            //initialPlatform: TargetPlatform.iOS,
       ),
     );
   }

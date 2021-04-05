@@ -2,6 +2,10 @@
 import 'dart:developer';
 
 import 'package:base_riverpod/app/data/model/counter_notifier.dart';
+import 'package:base_riverpod/app/themes/my_cupertinonavigationbardata.dart';
+import 'package:base_riverpod/app/themes/my_cupertinopagescaffolddata.dart';
+import 'package:base_riverpod/app/themes/my_materialappbardata.dart';
+import 'package:base_riverpod/app/themes/my_materialscaffolddata.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +22,11 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
-      appBar: PlatformAppBar(title: PlatformText('Counter example')),
+      material: (_,__,)=> myMaterialScaffoldData,
+      cupertino: (_,__,)=> myCupertinoPageScaffoldData,
+      appBar: PlatformAppBar(title: PlatformText('Counter example'),
+      material: (_, __,) => myMaterialAppBarData,
+      cupertino: (_, __) => myCupertinoNavigationBarData,),
       body: Column(
         // ignore: avoid_redundant_argument_values
         

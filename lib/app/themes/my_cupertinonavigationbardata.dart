@@ -1,0 +1,16 @@
+// Copyright(c) 2021 Fredrick Allan Grott. All rights reserved.
+// Use of this source code is governed by a BSD-style license.
+
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+
+CupertinoNavigationBarData myCupertinoNavigationBarData = CupertinoNavigationBarData(
+  brightness: Brightness.light,
+  backgroundColor: const CupertinoDynamicColor.withBrightnessAndContrast(
+        color: Colors.purple, 
+        darkColor: Colors.indigo, 
+        highContrastColor: Colors.indigoAccent, 
+        darkHighContrastColor: Colors.indigo)
+);

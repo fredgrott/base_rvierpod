@@ -8,7 +8,7 @@ final materialTheme = ThemeData(
       brightness: Brightness.light,
       primarySwatch: Colors.purple,
       visualDensity:  VisualDensity.adaptivePlatformDensity,
-      scaffoldBackgroundColor: Colors.deepPurple,
+      scaffoldBackgroundColor: Colors.white,
       textTheme: myMaterialTextTheme
     );
 
@@ -16,6 +16,6 @@ final materialDarkTheme = ThemeData(
       brightness: Brightness.dark,
       primarySwatch: Colors.indigo,
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      scaffoldBackgroundColor: Colors.indigoAccent,
+      scaffoldBackgroundColor: Colors.white,
       textTheme: myMaterialTextTheme
     );

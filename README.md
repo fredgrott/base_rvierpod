@@ -122,6 +122,12 @@ And, I can be DM'ed on Keybase at:
 
 ## Resources
 
+Specific articles:
+
+-[Logging, The Expert Way at Medium.com](https://medium.com/p/logging-the-expert-way-5beb5c967e44)
+
+General Resources:
+
 -[Riverpod repo](https://github.com/rrousselGit/river_pod)
 
 -[Riverpod @pub.dev](https://pub.dev/packages/riverpod)

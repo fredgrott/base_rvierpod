@@ -1,4 +1,5 @@
-
+// Copyright(c) 2021 Fredrick Allan Grott. All rights reserved.
+// Use of this source code is governed by a BSD-style license.
 
 import 'package:base_riverpod/app/themes/my_cupertinotext_theme.dart';
 import 'package:flutter/cupertino.dart';
