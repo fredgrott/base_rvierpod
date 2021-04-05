@@ -4,7 +4,9 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:base_riverpod/app/utils/logging/my_log_env.dart';
+import 'package:base_riverpod/app/utils/logging/init_log.dart';
+
+
 
 /// To make sure that we collect all expected and unexpected exceptions we
 /// have to prevent log swallowing via the => log return problem

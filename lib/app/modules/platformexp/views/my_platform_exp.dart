@@ -5,7 +5,9 @@
 import 'package:base_riverpod/app/modules/homepage/views/my_homepage_exp.dart';
 import 'package:base_riverpod/app/themes/my_cupertino.dart';
 import 'package:base_riverpod/app/themes/my_material.dart';
-import 'package:base_riverpod/app/utils/logging/my_log_env.dart';
+import 'package:base_riverpod/app/utils/logging/init_log.dart';
+import 'package:base_riverpod/app/utils/logging/logger_types.dart';
+
 
 import 'package:catcher/catcher.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,10 +16,10 @@ import 'package:flutter/widgets.dart';
 
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
-class MyPlatformExperience extends StatelessWidget with LogMixin {
+class MyPlatformExperience extends StatelessWidget with UiLogger {
   @override
   Widget build(BuildContext context) {
-    myAppLog("platformApp built");
+    logger.info(penCyan("platformApp built"));
     return Theme(
       data: brightness == Brightness.light ? materialTheme : materialDarkTheme,
       child: PlatformProvider(

@@ -1,12 +1,11 @@
 // Copyright(c) 2021 Fredrick Allan Grott. All rights reserved.
 // Use of this source code is governed by a BSD-style license.
 
-
-import 'package:base_riverpod/app/utils/logging/my_log_env.dart';
+import 'package:base_riverpod/app/utils/logging/init_log.dart';
+import 'package:base_riverpod/app/utils/logging/logger_types.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-class CounterNotifier extends StateNotifier<CounterModel> with LogMixin {
+class CounterNotifier extends StateNotifier<CounterModel> with UtilityLogger {
   CounterNotifier() : super(_initialValue);
 
   static const _initialValue = CounterModel(0);
@@ -14,7 +13,8 @@ class CounterNotifier extends StateNotifier<CounterModel> with LogMixin {
   void increment() {
     state = CounterModel(state.count + 1);
     // log our state change
-    myAppLog("count increased by 1");
+    //myAppLog("count increased by 1");
+    logger.info(penCyan("count increased by 1"));
   }
 }
 

@@ -6,8 +6,9 @@ import 'dart:async';
 import 'package:base_riverpod/app/modules/platformexp/views/my_platform_exp.dart';
 
 import 'package:base_riverpod/app/utils/build_modes.dart';
+import 'package:base_riverpod/app/utils/logging/init_log.dart';
 import 'package:base_riverpod/app/utils/logging/log_exception.dart';
-import 'package:base_riverpod/app/utils/logging/my_log_env.dart';
+import 'package:base_riverpod/app/utils/logging/logger_types.dart';
 
 import 'package:catcher/catcher.dart';
 
@@ -18,7 +19,7 @@ Future<void> main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
 
-    myLogSetUp();
+    initLog();
   } catch (error) {
     LogException("Main init failed");
   }
@@ -56,7 +57,8 @@ Future<void> main() async {
         printLogs: true)
   ]);
 
-  logger.info("init completed");
+  //logger.info("init completed");
+  logAFunction("main in main.dart").info(penCyan(" main init completed"));
 
   // replaced with catcher plugin error widget in my_app.dart
   //ErrorWidget.builder = (FlutterErrorDetails details) {
