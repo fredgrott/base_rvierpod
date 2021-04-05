@@ -9,3 +9,4 @@
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q-GENHTML, which is part of LCOV I am showing the windows port\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q-GENHTML, LCOV on Unix-Linux systems\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QApple Inc owns the trademarks iOS, MacOSX, Swift, and Objective-C.\\E$"}
+{"rule":"WORD_CONTAINS_UNDERSCORE","sentence":"^\\QAs of 4-4-21, the support for integration_test screenshots on iOS and android has been merged per:\\E$"}

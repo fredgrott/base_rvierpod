@@ -24,6 +24,14 @@ This is a base flutter project that is already set-up with:
 
 It is my belief that enough deliberate practice with the right feed-back building full flutter apps will get you to transform to flutter expert in 1000 hours.
 
+## TODO NOTE
+
+As of 4-4-21, the support for integration_test screenshots on iOS and android has been merged per:
+
+[screenshot issues](https://github.com/flutter/flutter/issues/51890)
+
+Once it shows up in the sdk, I will enable that in the integration-test implementation. It's needed as all the plugins rely upon the old integration-test implementation which is no longer in the flutter sdk.
+
 ## Reasoning
 
 The reasoning for doing it the skeleton-app way of learning Flutter-state-management:
