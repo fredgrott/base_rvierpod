@@ -14,8 +14,6 @@ This is a base flutter project that is already set-up with:
 
 -Provider Widget Injection
 
--GetIT Service Locator Injection
-
 -Widget Testing
 
 -Workflow automation using Derry scripting
