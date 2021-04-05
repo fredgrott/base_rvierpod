@@ -8,6 +8,7 @@ import 'package:base_riverpod/app/modules/platformexp/views/my_platform_exp.dart
 import 'package:base_riverpod/app/utils/build_modes.dart';
 import 'package:base_riverpod/app/utils/logging/init_log.dart';
 import 'package:base_riverpod/app/utils/logging/log_exception.dart';
+import 'package:base_riverpod/app/utils/logging/log_pens.dart';
 import 'package:base_riverpod/app/utils/logging/logger_types.dart';
 
 import 'package:catcher/catcher.dart';
@@ -58,7 +59,7 @@ Future<void> main() async {
   ]);
 
   //logger.info("init completed");
-  logAFunction("main in main.dart").info(penCyan(" main init completed"));
+  logAFunction("main in main.dart").info(penInfo(" main init completed"));
 
   // replaced with catcher plugin error widget in my_app.dart
   //ErrorWidget.builder = (FlutterErrorDetails details) {
@@ -116,7 +117,7 @@ Future<void> main() async {
         // Also print the message in the "Debug Console"
         // but it's ony an info message and contains no
         // privacy prohibited stuff
-        parent.print(zone, penBlue(messageToLog));
+        parent.print(zone, penInfo(messageToLog));
       },
     ),
   );
