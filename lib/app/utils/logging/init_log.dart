@@ -1,18 +1,12 @@
-import 'package:ansicolor/ansicolor.dart';
+
 import 'package:base_riverpod/app/utils/build_modes.dart';
+import 'package:base_riverpod/app/utils/logging/log_pens.dart';
 import 'package:logging/logging.dart';
 import 'package:logging_appenders/logging_appenders.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 
-final penCyan = AnsiPen()..cyan(bold: true);
-final penBlue = AnsiPen()..blue(bold: true);
-final penRed = AnsiPen()..red(bold: true);
-final penGreen = AnsiPen()..green(bold: true);
-final penYellow = AnsiPen()..yellow(bold: true);
-final penMagenta = AnsiPen()..magenta(bold: true);
-final penWhite = AnsiPen()..white(bold: true);
-final penBlack = AnsiPen()..black(bold: true);
+
 
 final logger = SimpleLogger();
 
@@ -54,12 +48,12 @@ void initLog() {
     );
   }
 
-  logger.formatter = (info) => penCyan(info.message);
-  logger.formatter = (shout) => penRed(shout.message);
-  logger.formatter = (warning) => penYellow(warning.message);
-  logger.formatter = (severe) => penMagenta(severe.message);
-  logger.formatter = (finest) => penBlack(finest.message);
-  logger.formatter = (finer) => penWhite(finer.message);
-  logger.formatter = (fine) => penGreen(fine.message);
-  logger.formatter = (config) => penBlue(config.message);
+  logger.formatter = (info) => penInfo(info.message);
+  logger.formatter = (shout) => penShout(shout.message);
+  logger.formatter = (warning) => penWarning(warning.message);
+  logger.formatter = (severe) => penSevere(severe.message);
+  logger.formatter = (finest) => penFinest(finest.message);
+  logger.formatter = (finer) => penFiner(finer.message);
+  logger.formatter = (fine) => penFine(fine.message);
+  logger.formatter = (config) => penConfig(config.message);
 }

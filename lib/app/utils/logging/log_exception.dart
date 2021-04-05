@@ -4,7 +4,9 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:base_riverpod/app/utils/logging/init_log.dart';
+import 'package:base_riverpod/app/utils/logging/log_pens.dart';
+
+
 
 
 
@@ -34,7 +36,7 @@ class LogException {
   LogException(this.message,
       {StackTrace stackTrace, this.cause, this.zone, this.level, this.time})
       : stackTrace = stackTrace ?? StackTrace.current {
-    log(penCyan(
+    log(penWarning(
         "$message\n$stackTrace${cause != null ? "\nCaused by:\n$cause" : ""} in zone of $zone at level: $level on this $time"));
   }
 }
